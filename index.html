@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nothing to see here…</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #111;
+    color: #eee;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    user-select: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 1rem;
+  }
+  .msg {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    max-width: 70ch;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+  <div class="msg" id="message">theres definitely nothing here</div>
+
+  <script>
+    const messages = [
+      "theres definitely nothing here",
+      "im not kidding",
+      "why are you even here tho",
+      "ok fine maybe theres something",
+      "nah false alarm",
+      "this is peak procrastination",
+      "seriously, go drink water",
+      "nothing yet",
+      "just vibes here",
+      "youre committed huh",
+      "im actually impressed",
+      "bro chill",
+      "ok lowkey this is funny",
+      "loading… jk",
+      "u thought",
+      "empty like my bank account",
+      "psych",
+      "just some therapy",
+      "your mouse is working overtime",
+      "nothing but respect for ur persistence",
+      "wow.",
+      "plot twist incoming… jk",
+      "lowkey proud of u",
+      "life is just scrolling sometimes",
+      "take a stretch break maybe",
+      "ok this is kinda absurd",
+      "dedication check",
+      "random thought: touch grass",
+      "still nothing lol",
+      "almost done?",
+      "final stretch vibes",
+      "suspense",
+      "ok fine. you win",
+      "the mystery continues",
+      "maybe theres more",
+      "patience is a virtue",
+      "dont give up now",
+      "just keep going",
+      "moment of truth?",
+      "energy levels checked",
+      "nothing here either",
+      "why tho",
+      "hmm…",
+      "maybe next time",
+      "try again",
+      "still here?",
+      "another one",
+      "you like this game huh",
+      "almost there",
+      "ok seriously",
+      "dont lose hope",
+      "keep going",
+      "this is getting wild",
+      "questionable life choices",
+      "endless vibes",
+      "youre a legend",
+      "legendary dedication",
+      "master of patience",
+      "so close",
+      "not quite",
+      "dont stop now",
+      "almost done",
+      "ok maybe stop",
+      "final countdown",
+      "counting attempts",
+      "marathon mode",
+      "just one more moment",
+      "the suspense",
+      "almost finished",
+      "just a few more",
+      "extraordinary effort",
+      "youre unstoppable",
+      "dont blink",
+      "keep your hand ready",
+      "its a wild ride",
+      "almost there champ",
+      "dont quit now",
+      "epic perseverance",
+      "its a journey",
+      "saga continues",
+      "dont give in",
+      "tenacity check",
+      "resilience level high",
+      "its all about patience",
+      "endurance mode",
+      "power moves",
+      "dedication vibes",
+      "energy levels high",
+      "legendary vibes",
+      "heroic effort",
+      "ultimate patience",
+      "universe of waiting",
+      "nothing to see here still",
+      "adventure continues",
+      "just a moment away",
+      "steady rhythm",
+      "final push",
+      "endgame vibes",
+      "one last moment",
+      "so close",
+      "ok maybe one more time",
+      "good job you made it braggin rights unlocked"
+    ];
+
+    const secretMessage = "🎉 Congrats! You found the REAL secret! 🎉 go to my insta and dm me the code sixseven";
+
+    let idx = 0;
+    const msg = document.getElementById("message");
+
+    // Left click cycles messages
+    document.body.addEventListener("click", () => {
+      if (idx < messages.length - 1) {
+        idx++;
+        msg.textContent = messages[idx];
+      }
+    });
+
+    // Right click triggers secret only if at last message
+    document.body.addEventListener("contextmenu", (e) => {
+      e.preventDefault(); // stop default right-click menu
+      if (idx === messages.length - 1) {
+        msg.textContent = secretMessage;
+      }
+    });
+  </script>
+</body>
+</html>
