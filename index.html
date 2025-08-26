@@ -135,9 +135,16 @@
     ];
 
     const secretMessage = "🎉 Congrats! You found the REAL secret! 🎉 the next step is ethanytangcodes.github.io/whatever the sixty seventh click is no spaces";
+    const repeatMessage = "😏 you really thought you could do the entire thing again?";
 
     let idx = 0;
     const msg = document.getElementById("message");
+
+    // Track if user has visited before
+    const hasVisited = localStorage.getItem("visitedBefore");
+    if (!hasVisited) {
+      localStorage.setItem("visitedBefore", "true");
+    }
 
     // Left click cycles messages
     document.body.addEventListener("click", () => {
@@ -151,7 +158,11 @@
     document.body.addEventListener("contextmenu", (e) => {
       e.preventDefault(); // stop default right-click menu
       if (idx === messages.length - 1) {
-        msg.textContent = secretMessage;
+        if (hasVisited) {
+          msg.textContent = repeatMessage;
+        } else {
+          msg.textContent = secretMessage;
+        }
       }
     });
   </script>
