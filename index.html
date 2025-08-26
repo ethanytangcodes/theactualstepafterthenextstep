@@ -97,7 +97,7 @@
       "counting attempts",
       "marathon mode",
       "just one more moment",
-      "the suspense is wild",
+      "the suspense is wild", // <-- gets replaced on repeat visits
       "almost finished",
       "just a few more",
       "extraordinary effort",
@@ -134,33 +134,21 @@
       "good job you made it braggin rights unlocked"
     ];
 
-    const secretMessage = "🎉 Congrats! You found the REAL secret! 🎉 the next step is ethanytangcodes.github.io/whatever the sixty seventh click is no spaces";
-    const repeatMessage = "😏 you really thought you could do the entire thing again?";
-
-    let idx = 0;
-    const msg = document.getElementById("message");
-
     // Check if they’ve visited before
     const hasVisited = localStorage.getItem("visitedBefore");
     if (!hasVisited) {
       localStorage.setItem("visitedBefore", "true");
+    } else {
+      // overwrite the 67th message (index 66) for repeat visitors
+      messages[66] = "you really thought you could do it again?";
     }
 
+    let idx = 0;
+    const msg = document.getElementById("message");
+
     document.body.addEventListener("click", () => {
-      idx++;
-
-      // If we're on the 67th click specifically
-      if (idx === 67) {
-        if (hasVisited) {
-          msg.textContent = repeatMessage;
-        } else {
-          msg.textContent = secretMessage;
-        }
-        return; // stop here so it doesn’t get overwritten
-      }
-
-      // Otherwise, just show the normal messages
-      if (idx < messages.length) {
+      if (idx < messages.length - 1) {
+        idx++;
         msg.textContent = messages[idx];
       }
     });
