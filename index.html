@@ -140,29 +140,28 @@
     let idx = 0;
     const msg = document.getElementById("message");
 
-    // Track if user has visited before
+    // Check if they’ve visited before
     const hasVisited = localStorage.getItem("visitedBefore");
     if (!hasVisited) {
       localStorage.setItem("visitedBefore", "true");
     }
 
-    // Left click cycles messages
     document.body.addEventListener("click", () => {
-      if (idx < messages.length - 1) {
-        idx++;
-        msg.textContent = messages[idx];
-      }
-    });
+      idx++;
 
-    // Right click triggers secret only if at last message
-    document.body.addEventListener("contextmenu", (e) => {
-      e.preventDefault(); // stop default right-click menu
-      if (idx === messages.length - 1) {
+      // If we're on the 67th click specifically
+      if (idx === 67) {
         if (hasVisited) {
           msg.textContent = repeatMessage;
         } else {
           msg.textContent = secretMessage;
         }
+        return; // stop here so it doesn’t get overwritten
+      }
+
+      // Otherwise, just show the normal messages
+      if (idx < messages.length) {
+        msg.textContent = messages[idx];
       }
     });
   </script>
